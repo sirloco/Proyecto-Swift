@@ -1,0 +1,20 @@
+PODS:
+  - geos (4.1.0)
+  - GEOSwift (6.0.0):
+    - geos (~> 4.1)
+
+DEPENDENCIES:
+  - GEOSwift
+
+SPEC REPOS:
+  trunk:
+    - geos
+    - GEOSwift
+
+SPEC CHECKSUMS:
+  geos: b315fca1a2dbb9169c2705aad078a26a7ef2cba8
+  GEOSwift: 74f5f658b2a74e8b0e8de7d3dde0c503a36b1e59
+
+PODFILE CHECKSUM: 3eb3553622b118103e47bce37c843181a81288e6
+
+COCOAPODS: 1.8.4
