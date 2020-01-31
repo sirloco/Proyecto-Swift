@@ -11,11 +11,15 @@ import MapKit
 import CoreLocation
 
 class ViewController: UIViewController {
-
+    
+    @IBAction func empezar(_ sender: Any) {ruta = !ruta}
+    
     @IBOutlet weak var mapa: MKMapView!
     
+    var ruta = false
+    var puntos = [CLLocationCoordinate2D]()
     let loc = CLLocationManager()
-    let regionEnMetros: Double = 10000
+    let regionEnMetros: Double = 100
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +29,7 @@ class ViewController: UIViewController {
     func posiciona(){
         
         loc.delegate = self
+        mapa.delegate=self
         loc.desiredAccuracy = kCLLocationAccuracyBest
     }
     
@@ -54,6 +59,7 @@ class ViewController: UIViewController {
         case .authorizedWhenInUse:
             mapa.showsUserLocation = true
             centraPosicionUsuario()
+            loc.startUpdatingLocation()
             break
             
         case .denied:
@@ -79,16 +85,48 @@ class ViewController: UIViewController {
 }
 
 extension ViewController: CLLocationManagerDelegate{
-    
-    func loc(_ gestiona: CLLocationManager, seMueve:[CLLocation]){
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
-        //codigo de la localizacion
+        guard let ultimaLocalizacion = locations.last else {return}
+        
+        let centro = CLLocationCoordinate2D(latitude: ultimaLocalizacion.coordinate.latitude, longitude: ultimaLocalizacion.coordinate.longitude)
+        
+        let region = MKCoordinateRegion.init(center: centro, latitudinalMeters: regionEnMetros, longitudinalMeters: regionEnMetros)
+        
+        
+        if (ruta) {
+            puntos.append(centro)
+            print(centro)
+            addPolyLineToMap(locations: puntos)
+        }else{
+            puntos.removeAll()
+        }
+        
+        mapa.setRegion(region, animated: true)
         
     }
     
-    func loc(_ gestiona: CLLocationManager, estado: CLAuthorizationStatus){
-        
-        // estado
+    func addPolyLineToMap(locations: [CLLocationCoordinate2D])
+    {
+
+        let polyline = MKPolyline(coordinates: locations, count: locations.count)
+        self.mapa.addOverlay(polyline)
     }
+    
+    
+    
 }
 
+extension ViewController:MKMapViewDelegate {
+      func mapView(_ mapView: MKMapView!, rendererFor overlay: MKOverlay!) -> MKOverlayRenderer! {
+        if (overlay is MKPolyline) {
+            let pr = MKPolylineRenderer(overlay: overlay);
+            pr.strokeColor = UIColor.red.withAlphaComponent(0.5);
+            pr.lineWidth = 5;
+            return pr;
+        }
+
+        return nil
+    }
+
+}
