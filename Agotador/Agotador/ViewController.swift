@@ -11,16 +11,24 @@ import MapKit
 import CoreLocation
 
 class ViewController: UIViewController {
+    @IBOutlet weak var lsegundos: UILabel!
+    @IBOutlet weak var ltiempo: UILabel!
+    @IBOutlet weak var lminutos: UILabel!
+    @IBOutlet weak var lhoras: UILabel!
     
     @IBAction func empezar(_ sender: Any) {ruta = !ruta}
     
     @IBOutlet weak var mapa: MKMapView!
     
     var ruta = false
+    var contando = false
     var puntos = [CLLocationCoordinate2D]()
     let loc = CLLocationManager()
     let regionEnMetros: Double = 100
+  
     
+    var tiempo = Timer()
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         compruebaServicioLoc()
@@ -81,10 +89,20 @@ class ViewController: UIViewController {
         }
     }
     
+ var segundos = 0
+ @objc func contador(){
+
+    segundos += 1
+    ltiempo.text = tiempoString(time: TimeInterval(segundos))
+        
+ }
 
 }
 
 extension ViewController: CLLocationManagerDelegate{
+    
+    
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         guard let ultimaLocalizacion = locations.last else {return}
@@ -98,8 +116,18 @@ extension ViewController: CLLocationManagerDelegate{
             puntos.append(centro)
             print(centro)
             addPolyLineToMap(locations: puntos)
+        
+            //esto es una movida del copon el timer en si mismo es recursivo
+            if (!contando){
+            tiempo = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(contador), userInfo: nil, repeats: true)
+                contando = !contando
+
+            }
+            
+
         }else{
             puntos.removeAll()
+            tiempo.invalidate()
         }
         
         mapa.setRegion(region, animated: true)
@@ -112,8 +140,6 @@ extension ViewController: CLLocationManagerDelegate{
         let polyline = MKPolyline(coordinates: locations, count: locations.count)
         self.mapa.addOverlay(polyline)
     }
-    
-    
     
 }
 
@@ -130,3 +156,12 @@ extension ViewController:MKMapViewDelegate {
     }
 
 }
+
+func tiempoString(time:TimeInterval) -> String {
+    let horas = Int(time) / 3600
+    let minutos = Int(time) / 60 % 60
+    let segundos = Int(time) % 60
+    return String(format:"%02d:%02d:%02d", horas, minutos, segundos)
+}
+
+
