@@ -61,7 +61,7 @@
                                         </constraints>
                                         <state key="normal" backgroundImage="book.fill" catalog="system"/>
                                         <connections>
-                                            <segue destination="gv5-m5-dXU" kind="show" id="xjx-r4-sSF"/>
+                                            <segue destination="gv5-m5-dXU" kind="show" identifier="sEstadisticas" id="xjx-r4-sSF"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -97,21 +97,31 @@
             </objects>
             <point key="canvasLocation" x="456.52173913043481" y="148.66071428571428"/>
         </scene>
-        <!--View Controller-->
+        <!--Table View Controller-->
         <scene sceneID="kSZ-Or-kT5">
             <objects>
-                <viewController id="gv5-m5-dXU" sceneMemberID="viewController">
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2d0-OC-x8R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewController id="gv5-m5-dXU" customClass="TableViewController" customModule="Agotador" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nG5-SC-SAa">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZDl-q4-AO8">
+                                <rect key="frame" x="20" y="20" width="374" height="788"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="u7z-ke-xft" firstAttribute="trailing" secondItem="ZDl-q4-AO8" secondAttribute="trailing" constant="20" id="Kj9-OR-IOT"/>
+                            <constraint firstItem="ZDl-q4-AO8" firstAttribute="leading" secondItem="u7z-ke-xft" secondAttribute="leading" constant="20" id="ZcH-zr-sgF"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="u7z-ke-xft"/>
                     </view>
                     <navigationItem key="navigationItem" id="bds-s0-Hzq"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2d0-OC-x8R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1446" y="149"/>
+            <point key="canvasLocation" x="1444.9275362318842" y="148.66071428571428"/>
         </scene>
     </scenes>
     <resources>

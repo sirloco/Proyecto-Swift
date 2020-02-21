@@ -7,5 +7,6 @@ target 'Agotador' do
 
   # Pods for Agotador
   pod 'GEOSwift'
+  pod 'RealmSwift'
 
 end

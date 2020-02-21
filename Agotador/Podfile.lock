@@ -2,19 +2,29 @@ PODS:
   - geos (4.1.0)
   - GEOSwift (6.0.0):
     - geos (~> 4.1)
+  - Realm (4.3.2):
+    - Realm/Headers (= 4.3.2)
+  - Realm/Headers (4.3.2)
+  - RealmSwift (4.3.2):
+    - Realm (= 4.3.2)
 
 DEPENDENCIES:
   - GEOSwift
+  - RealmSwift
 
 SPEC REPOS:
   trunk:
     - geos
     - GEOSwift
+    - Realm
+    - RealmSwift
 
 SPEC CHECKSUMS:
   geos: b315fca1a2dbb9169c2705aad078a26a7ef2cba8
   GEOSwift: 74f5f658b2a74e8b0e8de7d3dde0c503a36b1e59
+  Realm: 5e92902e2875dff4bb0fd02f67bb737c3d5db2bc
+  RealmSwift: 9a360fc7bae04fc2e308a34fbd899d5faa2d6b22
 
-PODFILE CHECKSUM: 3eb3553622b118103e47bce37c843181a81288e6
+PODFILE CHECKSUM: 133ba5debb91eda28b3ff9429ccd848f243e1ab1
 
 COCOAPODS: 1.8.4

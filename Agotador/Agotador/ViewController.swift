@@ -38,8 +38,19 @@ class ViewController: UIViewController {
     let loc = CLLocationManager()
     let regionEnMetros: Double = 100
     var contando = false
+    var distanciaRuta: Double = 0
+    var ultimaLoc: NSObject!
           
     var tiempo = Timer()
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if(segue.identifier == "sEstadisticas"){
+            let vc = segue.destination as! EstadisticasVc
+            vc.tiempo = ltiempo.text!
+            vc.distancia = distanciaRuta
+        }
+    }
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -97,6 +108,7 @@ class ViewController: UIViewController {
             //tiene permisos aunque no esté abierta
             break
             
+        default:()
         }
     }
 
@@ -122,7 +134,26 @@ extension ViewController: CLLocationManagerDelegate{
         
         //PLAY!
         if (ruta) {
+            
+            let loc: CLLocation =  CLLocation(latitude: ultimaLocalizacion.coordinate.latitude, longitude: ultimaLocalizacion.coordinate.longitude)
+            
+            if(puntos.count > 0) {
+
+                let distancia : CLLocationDistance = loc.distance(from: ultimaLoc as! CLLocation)
+                
+                distanciaRuta += distancia
+
+                print(distancia)
+
+            }else{
+                ultimaLoc = loc
+            }
+            
+            ultimaLoc = loc
+            
             puntos.append(centro)
+            
+            
             print(centro)//MARK: borrar esto
             addPolyLineToMap(locations: puntos)
         
@@ -146,7 +177,6 @@ extension ViewController: CLLocationManagerDelegate{
     
     func addPolyLineToMap(locations: [CLLocationCoordinate2D])
     {
-
         let polyline = MKPolyline(coordinates: locations, count: locations.count)
         self.mapa.addOverlay(polyline)
     }
@@ -158,7 +188,7 @@ extension ViewController:MKMapViewDelegate {
         if (overlay is MKPolyline) {
             let pr = MKPolylineRenderer(overlay: overlay);
             pr.strokeColor = UIColor.green.withAlphaComponent(0.5);
-            pr.lineWidth = 5;
+            pr.lineWidth = 10;
             return pr;
         }
 
