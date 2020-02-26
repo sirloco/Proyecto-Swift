@@ -61,7 +61,7 @@
                                         </constraints>
                                         <state key="normal" backgroundImage="book.fill" catalog="system"/>
                                         <connections>
-                                            <segue destination="gv5-m5-dXU" kind="show" identifier="sEstadisticas" id="xjx-r4-sSF"/>
+                                            <segue destination="EOe-TA-6iP" kind="show" identifier="sEstadisticas" id="4ys-I5-FqL"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -97,31 +97,34 @@
             </objects>
             <point key="canvasLocation" x="456.52173913043481" y="148.66071428571428"/>
         </scene>
-        <!--Table View Controller-->
-        <scene sceneID="kSZ-Or-kT5">
+        <!--Tiempos Table View Controller-->
+        <scene sceneID="6cN-tJ-PcK">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="2d0-OC-x8R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <viewController id="gv5-m5-dXU" customClass="TableViewController" customModule="Agotador" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="nG5-SC-SAa">
+                <tableViewController id="EOe-TA-6iP" customClass="TiemposTableViewController" customModule="Agotador" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="srZ-Dn-cRb">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ZDl-q4-AO8">
-                                <rect key="frame" x="20" y="20" width="374" height="788"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            </tableView>
-                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="u7z-ke-xft" firstAttribute="trailing" secondItem="ZDl-q4-AO8" secondAttribute="trailing" constant="20" id="Kj9-OR-IOT"/>
-                            <constraint firstItem="ZDl-q4-AO8" firstAttribute="leading" secondItem="u7z-ke-xft" secondAttribute="leading" constant="20" id="ZcH-zr-sgF"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="u7z-ke-xft"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="bds-s0-Hzq"/>
-                </viewController>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="celdita" id="cCR-Vw-ZI2">
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="cCR-Vw-ZI2" id="K9M-Er-gks">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="EOe-TA-6iP" id="wum-l2-Mn5"/>
+                            <outlet property="delegate" destination="EOe-TA-6iP" id="T71-Z8-Z1r"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" id="1ny-kU-A1d"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3zd-mz-Qob" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1444.9275362318842" y="148.66071428571428"/>
+            <point key="canvasLocation" x="1443" y="147"/>
         </scene>
     </scenes>
     <resources>

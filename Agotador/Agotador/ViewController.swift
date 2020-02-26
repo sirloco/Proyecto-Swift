@@ -9,10 +9,27 @@
 import UIKit
 import MapKit
 import CoreLocation
+import RealmSwift
+
+class Recorrido:Object{
+    @objc dynamic var tiempo = ""
+    @objc dynamic var distancia: Double = 0
+    @objc dynamic var id = 0
+}
+
 
 class ViewController: UIViewController {
     @IBOutlet weak var ltiempo: UILabel!
     @IBAction func para(_ sender: Any) {
+        
+        var caminado = Recorrido()
+        caminado.tiempo = ltiempo.text!
+        caminado.distancia = distanciaRuta
+        
+        let realm = try! Realm()
+        
+        try! realm.write{ realm.add(caminado) }
+        
         puntos.removeAll()
         contando = true
         tiempo.invalidate()
@@ -46,9 +63,8 @@ class ViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if(segue.identifier == "sEstadisticas"){
-            let vc = segue.destination as! EstadisticasVc
-            vc.tiempo = ltiempo.text!
-            vc.distancia = distanciaRuta
+            
+            let vc = segue.destination as! TiemposTableViewController
         }
     }
    

@@ -1,17 +1,24 @@
 //
-//  TableViewController.swift
+//  TiemposTableViewController.swift
 //  Agotador
 //
-//  Created by  on 21/02/2020.
+//  Created by  on 26/02/2020.
 //  Copyright © 2020 relar. All rights reserved.
 //
 
 import UIKit
-import Foundation
 import RealmSwift
 
-class TableViewController: UITableViewController {
+class TiemposTableViewController: UITableViewController {
 
+    let realm = try! Realm()
+    
+    var recorridos: Results<Recorrido>{
+        get{
+            return realm.objects(Recorrido.self)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -24,67 +31,26 @@ class TableViewController: UITableViewController {
 
     // MARK: - Table view data source
 
-    @IBOutlet weak var resultado: UILabel!
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return recorridos.count
     }
-    
-    var tiempo: String = ""
-    var distancia: Double = 0
 
     
-    //resultado.text = String(format: " %.2f metros en ", distancia) + tiempo
-        // Do any additional setup after loading the view.
-        //movidaLista()
-    //}
-
-
-//    class tramo: Object {
-//      @objc dynamic var dist = 0.0
-//      @objc dynamic var ti = ""
-//      @objc dynamic var created = Date()
-//    }
-    
-    //@objc dynamic var listado: Listado!
-    
-
-    //let realm = try! Realm()
-//var lista: Results<Listado> = { self.realm.objects(Listado.self) }()
-//
-//    private func movidaLista() {
-//      if lista.count == 0 { // 1
-//        try! realm.write() { // 2
-//          let defaultCategories =
-//            ["Birds", "Mammals", "Flora", "Reptiles", "Arachnids" ] // 3
-//
-//          for category in defaultCategories { // 4
-//            let nuevaLista = Listado()
-//            nuevaLista.nombre = category
-//
-//            realm.add(nuevaLista)
-//          }
-//        }
-//
-//        lista = realm.objects(Listado.self) // 5
-//      }
-//    }
-
-
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "celdita", for: indexPath)
 
-        // Configure the cell...
-
+        let fila = indexPath.row
+        cell.textLabel?.text = "Tiempo: " + recorridos[fila].tiempo + " Distancia: " + String(format: "%.2f metros", recorridos[fila].distancia)
+        
         return cell
     }
-    */
+    
 
     /*
     // Override to support conditional editing of the table view.
@@ -130,6 +96,5 @@ class TableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
-
 
 }
