@@ -212,5 +212,3 @@ func tiempoString(time:TimeInterval) -> String {
     let segundos = Int(time) % 60
     return String(format:"%02d:%02d:%02d", horas, minutos, segundos)
 }
-
-
