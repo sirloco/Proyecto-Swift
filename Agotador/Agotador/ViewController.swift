@@ -22,7 +22,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var ltiempo: UILabel!
     @IBAction func para(_ sender: Any) {
         
-        var caminado = Recorrido()
+        let caminado = Recorrido()
         caminado.tiempo = ltiempo.text!
         caminado.distancia = distanciaRuta
         
@@ -30,6 +30,7 @@ class ViewController: UIViewController {
         
         try! realm.write{ realm.add(caminado) }
         
+        ruta = false
         puntos.removeAll()
         contando = true
         tiempo.invalidate()
@@ -60,14 +61,6 @@ class ViewController: UIViewController {
           
     var tiempo = Timer()
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if(segue.identifier == "sEstadisticas"){
-            
-            let vc = segue.destination as! TiemposTableViewController
-        }
-    }
-   
     override func viewDidLoad() {
         super.viewDidLoad()
         compruebaServicioLoc()

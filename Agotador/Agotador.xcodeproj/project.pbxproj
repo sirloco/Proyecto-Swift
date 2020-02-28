@@ -15,7 +15,6 @@
 		83C3263C23D2480E00A673F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83C3263A23D2480E00A673F1 /* LaunchScreen.storyboard */; };
 		83C84AF32406EB440033BEA3 /* TiemposTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83C84AF22406EB440033BEA3 /* TiemposTableViewController.swift */; };
 		83F32ED324005C9D00AE532D /* Listado.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F32ED224005C9D00AE532D /* Listado.swift */; };
-		83F32ED52400632B00AE532D /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83F32ED42400632B00AE532D /* TableViewController.swift */; };
 		E35CD05505AD6E509E101466 /* Pods_Agotador.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E74870F3D230D999C602905D /* Pods_Agotador.framework */; };
 /* End PBXBuildFile section */
 
@@ -30,7 +29,6 @@
 		83C3263D23D2480E00A673F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		83C84AF22406EB440033BEA3 /* TiemposTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TiemposTableViewController.swift; sourceTree = "<group>"; };
 		83F32ED224005C9D00AE532D /* Listado.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Listado.swift; sourceTree = "<group>"; };
-		83F32ED42400632B00AE532D /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		97B2E140D967E8B8C0956BEC /* Pods-Agotador.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Agotador.debug.xcconfig"; path = "Target Support Files/Pods-Agotador/Pods-Agotador.debug.xcconfig"; sourceTree = "<group>"; };
 		E270CD21C6D98E7B35377F24 /* Pods-Agotador.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Agotador.release.xcconfig"; path = "Target Support Files/Pods-Agotador/Pods-Agotador.release.xcconfig"; sourceTree = "<group>"; };
 		E74870F3D230D999C602905D /* Pods_Agotador.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Agotador.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -77,7 +75,6 @@
 				83C3263A23D2480E00A673F1 /* LaunchScreen.storyboard */,
 				83C3263D23D2480E00A673F1 /* Info.plist */,
 				83F32ED224005C9D00AE532D /* Listado.swift */,
-				83F32ED42400632B00AE532D /* TableViewController.swift */,
 				83C84AF22406EB440033BEA3 /* TiemposTableViewController.swift */,
 			);
 			path = Agotador;
@@ -216,7 +213,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				83C3263423D2480D00A673F1 /* ViewController.swift in Sources */,
-				83F32ED52400632B00AE532D /* TableViewController.swift in Sources */,
 				83C3263023D2480D00A673F1 /* AppDelegate.swift in Sources */,
 				83F32ED324005C9D00AE532D /* Listado.swift in Sources */,
 				83C84AF32406EB440033BEA3 /* TiemposTableViewController.swift in Sources */,
